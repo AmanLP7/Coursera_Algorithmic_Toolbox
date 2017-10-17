@@ -10,6 +10,10 @@ import random
          ########################################
 
 
+## Step 1 -> Take a two dimensional array, having length W, 
+##           and breadth n.
+
+## Step 2 -> 
 
 
 

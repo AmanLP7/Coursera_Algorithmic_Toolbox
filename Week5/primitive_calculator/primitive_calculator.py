@@ -45,8 +45,15 @@ def optimal_sequence(n):
 ##           will be used to store the sequence in which operation
 ##           proceed.
 
+## Step 3 -> Fill the array "steps" with the minimum number of
+##           operations to be performed to reach ith number
 
-def optimal_sequence(n):
+## Step 4 -> Backtrack the sequence of intermediate numbers and
+##           fill array "sequence" with it.
+
+
+
+def optimal_sequenceDP(n):
 	steps = [0]*2
 	steps.extend([float("Inf")] * (n-1))
 
@@ -66,19 +73,32 @@ def optimal_sequence(n):
 		else:
 			steps[i] = steps[i-1] + 1
 
+	#return(steps[n])
 
-    return(steps[n])
+
+	# Backtracking the sequence of intermediate numbers
+
+	while (n >= 1):
+		sequence.append(n)
+
+		if (n % 6 == 0):
+			[_,n] = min([steps[n//3],n//3], [steps[n//2],n//2],
+				        [steps[n-1],n-1], key = lambda x: x[0])
+		elif (n % 3 == 0):
+			[_,n] = min([steps[n//3],n//3], [steps[n-1],n-1],
+				        key = lambda x:x[0])
+		elif (n % 2 == 0):
+			[_,n] = min([steps[n//2],n//2], [steps[n-1],n-1])
+		else:
+			[_,n] = [steps[n-1],n-1]
+
+	return(sequence[::-1]) 
 
 
 ##============================================================##
 
 
-n = int(input)
-sequence = list(optimal_sequence(n))
-print(len(sequence) - 1)
-for x in sequence:
-    print(x, end=' ')
-
-
+n = int(input())
+print(*optimal_sequenceDP(n), end = " ")
 
 ##============================================================##

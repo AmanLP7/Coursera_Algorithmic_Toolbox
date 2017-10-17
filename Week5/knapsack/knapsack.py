@@ -1,5 +1,17 @@
 # Uses python3
-import sys
+import random
+
+
+##=========================================================##
+
+         ########################################
+         ##### Knapscak without repititions #####
+         #####    Time complexity => O(n)   #####
+         ########################################
+
+
+
+
 
 def optimal_weight(W, w):
     # write your code here
@@ -9,7 +21,13 @@ def optimal_weight(W, w):
             result = result + x
     return result
 
+
+##=========================================================##
+
+
 if __name__ == '__main__':
-    input = sys.stdin.read()
-    W, n, *w = list(map(int, input.split()))
-    print(optimal_weight(W, w))
+    W, n, *w = list(map(int, input().split(" ")))
+    print(W,n,w)
+
+
+##=========================================================##

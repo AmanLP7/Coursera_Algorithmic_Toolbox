@@ -18,13 +18,23 @@ import random
 
 
 def optimal_weight(W, w):
-    # write your code here
-    result = 0
-    for x in w:
-        if result + x <= W:
-            result = result + x
-    return result
+    
+    # knapsack matrix
+    value = [[0 for x in range(W+1)]
+                       for y in range(len(w) + 1)]
 
+    for i in range(1, len(w) + 1):
+    	for weights in range(1, W+1):
+    		value[i][weights] = value[i-1][weights]
+    		if w[i] < weights:
+    			val = value[i-1][weights-w[i]] + w[i]
+    			if value[i][weights] < val:
+    				value[i][weights] = val
+
+
+    return(value[n][W])
+ 
+ 
 
 ##=========================================================##
 

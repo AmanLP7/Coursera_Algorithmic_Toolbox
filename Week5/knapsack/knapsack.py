@@ -52,11 +52,13 @@ def optimal_weight(W, w):
 
 ##=========================================================##
 
-             ####################################
-             ###  Knapsack without repitions  ###
-             ###      recursive solution      ###
-             ###   Time complexity => O()     ###
-             ####################################
+             ######################################
+             ###  Knapsack without repititions  ###
+             ###        recursive solution      ###
+             ###     Time complexity => O()     ###
+             ######################################
+
+
 
 
 

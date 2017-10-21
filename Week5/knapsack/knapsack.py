@@ -77,18 +77,43 @@ def optimal_weight_Recursive(W,w,n):
 	## case 1 -> nth item included
 	## case 2 -> not included
 	else:
-		return(max(w[n-1] + 
-			   optimal_weight_Recursive(W-w[n-1], w, n-1))),
-		       optimal_weight_Recursive(W,w,n-1))
+		return(max(w[n-1] +
+			   optimal_weight_Recursive(W-w[n-1],w,n-1),
+			   optimal_weight_Recursive(W,w,n-1)))
+
 
 
 
 
 ##=========================================================##
-
+'''
 if __name__ == '__main__':
     W, n, *w = list(map(int, input().split(" ")))
-    print(optimal_weight(W,w))
-
+    print(optimal_weight_Recursive(W,w,n))
+'''
 
 ##=========================================================##
+
+
+              ################################
+              #######  Stress Testing  #######
+              ################################
+
+
+while(True):
+	W = random.randint(9998,10090)
+	n = random.randint(295,310)
+	w = [random.randint(900,100000) for _ in range(n)]
+
+	res1 = optimal_weight(W,w)
+	print(res1, "OK")
+    
+	'''
+	res2 = optimal_weight_Recursive(W,w,n)
+    
+	if res1 != res2:
+		print("Wrong Answer", res1,res2,W,n,w,sep = ' ')
+		break
+	else:
+		print("OK")
+    '''

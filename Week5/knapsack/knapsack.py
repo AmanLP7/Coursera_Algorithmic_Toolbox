@@ -55,9 +55,31 @@ def optimal_weight(W, w):
              ######################################
              ###  Knapsack without repititions  ###
              ###        recursive solution      ###
-             ###     Time complexity => O()     ###
+             ###   Time complexity => O(2^n)    ###
              ######################################
 
+
+## This is the recursive implementation of knapsack without
+## repititions.
+
+def optimal_weight_Recursive(W,w,n):
+
+	## Base case
+	if (n == 0 or W == 0):
+		return 0
+
+	## If weight of nth item is greater than the knapsack
+	## capacity W, then it can't be included.
+	if (w[n-1] > W):
+		return(optimal_weight_Recursive(W,w,n-1))
+
+	## Return the maximum of two cases
+	## case 1 -> nth item included
+	## case 2 -> not included
+	else:
+		return(max(w[n-1] + 
+			   optimal_weight_Recursive(W-w[n-1], w, n-1))),
+		       optimal_weight_Recursive(W,w,n-1))
 
 
 

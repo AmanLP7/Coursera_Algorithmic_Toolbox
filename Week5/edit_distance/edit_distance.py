@@ -1,7 +1,22 @@
-# Uses python3
-def edit_distance(s, t):
-    #write your code here
-    return 0
+                   
 
-if __name__ == "__main__":
-    print(edit_distance(input(), input()))
+                 ###############################
+                 ###  Edit distance problem  ###
+                 ###############################
+
+
+import random
+
+
+##-------------------------------------------------------------##
+
+
+              ######################################
+              ## Edit distance recursive solution ##
+              ######################################
+
+
+## This is the recursive solution to edit distance problem.
+
+## Problem Definition =>
+## 

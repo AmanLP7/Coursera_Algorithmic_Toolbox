@@ -59,10 +59,34 @@ def edit_distance_recursive(string1, string2, m, n):
 ##-------------------------------------------------------------------##
 
 
+                  #######################################
+                  ###           Edit Distance         ###
+                  ###   Dynamic Programming Solution  ###
+                  ###     Time Complexity => O()      ###
+                  #######################################
+
+
+                  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##-------------------------------------------------------------------##
+
 
 if __name__ == "__main__":
-	string1 = input().split(" ")
-	string2 = input().split(" ")
+	string1 = list(input())
+	string2 = list(input())
 
 	print(edit_distance_recursive(string1, string2, 
 		                          len(string1), len(string2)))

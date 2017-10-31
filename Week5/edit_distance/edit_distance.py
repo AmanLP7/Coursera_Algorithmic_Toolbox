@@ -83,18 +83,13 @@ def edit_distance_recursive(string1, string2, m, n):
 
 
 
-def edit_distance_DP(string1, sring2):
+def edit_distance_DP(string1, string2):
 
 	m = len(string1)
 	n = len(string2)
 
 	# Edit distance matrix
 	distance = [[0 for x in range(m+1)] for y in range(n+1)]
-
-    
-	for rows in distance:
-		print(*rows, end = " ")
-		print('\n')
 
 
 	for i in range(1,m+1):
@@ -105,10 +100,16 @@ def edit_distance_DP(string1, sring2):
 			mismatch = distance[i][j] + 1
 
 			# Checking for alignment
-			if string1[i] == string2[j]:
-				distance = min(insertion, deletion, match)
+			if string1[i-1] == string2[j-1]:
+				distance[i][j] = min(insertion, deletion, match)
 			else:
-				distance = min(insertion, deletion, mismatch)
+				distance[i][j] = min(insertion, deletion, mismatch)
+			
+
+	for rows in distance:
+		print(*rows, end = " ")
+		print('\n')
+
 
 
 	return(distance[m][n])
@@ -120,7 +121,7 @@ def edit_distance_DP(string1, sring2):
 if __name__ == "__main__":
 	string1 = list(input())
 	string2 = list(input())
-
+	print(string1, string2, end = " ")
 	print(edit_distance_DP(string1, string2))
 
 

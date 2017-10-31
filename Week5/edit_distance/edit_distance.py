@@ -91,20 +91,27 @@ def edit_distance_DP(string1, sring2):
 	# Edit distance matrix
 	distance = [[0 for x in range(m+1)] for y in range(n+1)]
 
-    '''
+    
 	for rows in distance:
 		print(*rows, end = " ")
 		print('\n')
-    '''
-    
-    for i in range(1, m+1):
-    	for j in range(1, n+1):
-    		insertion = distance[i][j-1]
-    		deletion = distance[i-1][j]
 
 
+	for i in range(1,m+1):
+		for j in range(1,n+1):
+			insertion = distance[i][j-1] + 1
+			deletion = distance[i-1][j] + 1
+			match = distance[i][j]
+			mismatch = distance[i][j] + 1
+
+			# Checking for alignment
+			if string1[i] == string2[j]:
+				distance = min(insertion, deletion, match)
+			else:
+				distance = min(insertion, deletion, mismatch)
 
 
+	return(distance[m][n])
 
 
 ##-------------------------------------------------------------------##

@@ -62,19 +62,45 @@ def edit_distance_recursive(string1, string2, m, n):
                   #######################################
                   ###           Edit Distance         ###
                   ###   Dynamic Programming Solution  ###
-                  ###     Time Complexity => O()      ###
+                  ###    Time Complexity => O(m*n)    ###
                   #######################################
 
 
-                  
+## Input => Two strings of lower case letters.
+## Output => Edit distance between the two strings.
+
+## This is an algorithm for computing edit distance between two
+## strings using dynamic programming.
+
+## Time complexity => O(m*n)
+
+
+## Step 1 -> Initialise a matrix of row m, and column n with 0.
+
+## Step 2 -> Compute the cost of performing folllowing 3 operations
+##           insertion, deletion, mismatch, if character in both
+##           the string match then the cost is 0, else 1.
 
 
 
+def edit_distance_DP(string1, sring2):
 
+	m = len(string1)
+	n = len(string2)
 
+	# Edit distance matrix
+	distance = [[0 for x in range(m+1)] for y in range(n+1)]
 
-
-
+    '''
+	for rows in distance:
+		print(*rows, end = " ")
+		print('\n')
+    '''
+    
+    for i in range(1, m+1):
+    	for j in range(1, n+1):
+    		insertion = distance[i][j-1]
+    		deletion = distance[i-1][j]
 
 
 
@@ -88,8 +114,7 @@ if __name__ == "__main__":
 	string1 = list(input())
 	string2 = list(input())
 
-	print(edit_distance_recursive(string1, string2, 
-		                          len(string1), len(string2)))
+	print(edit_distance_DP(string1, string2))
 
 
 

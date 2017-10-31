@@ -88,8 +88,15 @@ def edit_distance_DP(string1, string2):
 	m = len(string1)
 	n = len(string2)
 
-	# Edit distance matrix
+	# Edit distance matrix initialised with 0
 	distance = [[0 for x in range(m+1)] for y in range(n+1)]
+
+	# The first row and first column of the distance matrix
+	# is initialised with i = 1...m, and j = 1...m
+	for j in range(m+1):
+		distance[0][j] = j
+	for i in range(n+1):
+		distance[i][0] = i
 
 
 	for i in range(1,m+1):
@@ -122,9 +129,7 @@ if __name__ == "__main__":
 	string1 = list(input())
 	string2 = list(input())
 	print(string1, string2, end = " ")
+	print('\n')
 	print(edit_distance_DP(string1, string2))
-
-
-
 
 ##-------------------------------------------------------------------##

@@ -105,18 +105,23 @@ def edit_distance_DP(string1, string2):
 		for j in range(1,m+1):
 			insertion = distance[i][j-1] + 1
 			deletion = distance[i-1][j] + 1
-			match = distance[i][j]
-			mismatch = distance[i][j] + 1
+			match = distance[i-1][j-1]
+			mismatch = distance[i-1][j-1] + 1
 
 			# Checking for match
-			if string1[i-1] == string2[j-1]:
+			if string1[j-1] == string2[i-1]:
 				distance[i][j] = min(insertion,deletion,match)
-			else:
+			elif string1[j-1] != string2[i-1]:
 				distance[i][j] = min(insertion, deletion,mismatch)
-
+	'''
 	for rows in distance:
 		print(*rows, end = " ")
 		print('\n')
+	'''
+
+	return(distance[n][m])
+
+
 
 ##-------------------------------------------------------------------##
 

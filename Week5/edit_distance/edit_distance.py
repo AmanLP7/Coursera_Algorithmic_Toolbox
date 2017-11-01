@@ -77,6 +77,10 @@ def edit_distance_recursive(string1, string2, m, n):
 
 ## Step 1 -> Initialise a matrix of row m, and column n with 0.
 
+## Step 2 -> Initialise the first row of the matrix with corresponding
+##           column number and, first column with the corresponding
+##           row number.
+
 ## Step 2 -> Compute the cost of performing folllowing 3 operations
 ##           insertion, deletion, mismatch, if character in both
 ##           the string match then the cost is 0, else 1.
@@ -88,39 +92,31 @@ def edit_distance_DP(string1, string2):
 	m = len(string1)
 	n = len(string2)
 
-	# Edit distance matrix initialised with 0
+	# Distance matrix with (m+1) rows, and (n+1) columns
 	distance = [[0 for x in range(m+1)] for y in range(n+1)]
 
-	# The first row and first column of the distance matrix
-	# is initialised with i = 1...m, and j = 1...m
-	for j in range(m+1):
-		distance[0][j] = j
-	for i in range(n+1):
-		distance[i][0] = i
+	for i in range(m+1):
+		distance[0][i] = i
+	for j in range(n+1):
+		distance[j][0] = j
 
-
-	for i in range(1,m+1):
-		for j in range(1,n+1):
+	# Filling the distance matrix
+	for i in range(1, n+1):
+		for j in range(1,m+1):
 			insertion = distance[i][j-1] + 1
 			deletion = distance[i-1][j] + 1
 			match = distance[i][j]
 			mismatch = distance[i][j] + 1
 
-			# Checking for alignment
+			# Checking for match
 			if string1[i-1] == string2[j-1]:
-				distance[i][j] = min(insertion, deletion, match)
+				distance[i][j] = min(insertion,deletion,match)
 			else:
-				distance[i][j] = min(insertion, deletion, mismatch)
-			
+				distance[i][j] = min(insertion, deletion,mismatch)
 
 	for rows in distance:
 		print(*rows, end = " ")
 		print('\n')
-
-
-
-	return(distance[m][n])
-
 
 ##-------------------------------------------------------------------##
 

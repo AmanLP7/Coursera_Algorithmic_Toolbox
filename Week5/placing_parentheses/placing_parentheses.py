@@ -18,7 +18,9 @@
 
 
 
-## Function to evaluate expression                 
+
+
+## Function to perform given operation on an expression                
 def evalt(a, b, op):
     if op == '+':
         return a + b
@@ -29,6 +31,16 @@ def evalt(a, b, op):
     else:
         assert False
 
+
+
+## Function to calculate minimum and maximum value for an expression
+def MinAndMax(i,j):
+    min = -float("Inf")
+    max = float("Inf")
+
+    #Loop to calculate minimum and maximum value
+    for k in range(i,j):
+        a = M[i][k]
 
 
 ## Function to get maximum value using dynamic programming.

@@ -59,6 +59,7 @@ def evalt(a, b, op):
 def MinAndMax(i,j):
     minVal = -float("Inf")
     maxVal = float("Inf")
+    minMax = 0
 
     #Loop to calculate minimum and maximum value
     for k in range(i,j):
@@ -69,6 +70,8 @@ def MinAndMax(i,j):
 
         minMax = [min(minVal, a, b, c, d), max(maxVal, a, b, c, d)]
 
+    print(minMax)
+
 
     return(minMax)
 
@@ -77,7 +80,7 @@ def MinAndMax(i,j):
 
 
 ## Function to get maximum value using dynamic programming.
-def get_maximum_value(digits, operator):
+def get_maximum_value(digits, operators):
 
     n = len(digits)
 
@@ -111,9 +114,7 @@ def get_maximum_value(digits, operator):
             j = i+s
             m[i][j], M[i][j] = MinAndMax(i,j)
 
-
-
-    return
+    return (M[0][n-1])
 
     
 
@@ -122,12 +123,17 @@ def get_maximum_value(digits, operator):
 ##-------------------------------------------------------------------##
 
 
+
+
+
 if __name__ == "__main__":
     expression = list(input())
     digits = expression[0:len(expression)+1:2]
     operators = expression[1:len(expression)+1:2]
     print(digits,operators)
     get_maximum_value(digits, operators)
+
+
 
 
 ##-------------------------------------------------------------------##

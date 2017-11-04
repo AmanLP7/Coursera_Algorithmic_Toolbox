@@ -28,6 +28,12 @@
 ##                          for an expression by reordering, 
 ##                          parantheses.  
 
+## Steps involved ==>>
+## 
+## Step 1 -> Initialise two square matrices of length n, "m" and "M".
+## Step 2 -> Fill diagnol elements of both the matrices with the their
+##           respective digit in the "digits" array. 
+
 
 
 
@@ -71,8 +77,45 @@ def MinAndMax(i,j):
 
 
 ## Function to get maximum value using dynamic programming.
-def get_maximum_value(dataset):
+def get_maximum_value(digits, operator):
 
+    n = len(digits)
+
+    #Matrices to store minimum and maximum values
+    #M stores minimum values and M stores maximum values
+    m = [[0 for i in range(n)] for j in range(n)]
+    M = [[0 for i in range(n)] for j in range(n)]
+
+    #Filling the diagnol elements
+    for i in range(n):
+        m[i][i] = digits[i]
+        M[i][i] = digits[i]
+
+
+    '''
+    for row in m:
+        print(*row, end= " ")
+        print("\n")
+
+    print('\n')
+
+    for row in M:
+        print(*row, end = " ")
+        print('\n')
+    '''
+
+
+    #Loop to find minimum and maximum values for a expression
+    for s in range(n-1):
+        for i in range(1,n-s-1):
+            j = i+s
+            m[i][j], M[i][j] = MinAndMax(i,j)
+
+
+
+    return
+
+    
 
 
 
@@ -81,10 +124,10 @@ def get_maximum_value(dataset):
 
 if __name__ == "__main__":
     expression = list(input())
-    digit = expression[0:len(expression)+1:2]
-    operator = expression[1:len(expression)+1:2]
-    print(digit,operator)
-
+    digits = expression[0:len(expression)+1:2]
+    operators = expression[1:len(expression)+1:2]
+    print(digits,operators)
+    get_maximum_value(digits, operators)
 
 
 ##-------------------------------------------------------------------##

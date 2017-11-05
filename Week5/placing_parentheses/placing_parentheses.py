@@ -56,17 +56,17 @@ def evalt(a, b, op):
 ## Function to calculate minimum and maximum value for an expression.
 ## The function returns a list whose first value is the minimum value,
 ## and the second value is a maximum value.
-def MinAndMax(i,j):
+def MinAndMax(i,j,M,m,operators):
     minVal = -float("Inf")
     maxVal = float("Inf")
     minMax = 0
 
     #Loop to calculate minimum and maximum value
     for k in range(i,j):
-        a = evalt(M[i][k], M[k+1][j], operator[k])
-        b = evalt(M[i][k], m[k+1][j], operator[k])
-        c = evalt(m[i][k], M[k+1][j], operator[k])
-        d = evalt(m[i][k], m[k+1][j], operator[k])
+        a = evalt(M[i][k], M[k+1][j], operators[k])
+        b = evalt(M[i][k], m[k+1][j], operators[k])
+        c = evalt(m[i][k], M[k+1][j], operators[k])
+        d = evalt(m[i][k], m[k+1][j], operators[k])
 
         minMax = [min(minVal, a, b, c, d), max(maxVal, a, b, c, d)]
 
@@ -95,7 +95,7 @@ def get_maximum_value(digits, operators):
         M[i][i] = digits[i]
 
 
-    '''
+    
     for row in m:
         print(*row, end= " ")
         print("\n")
@@ -105,14 +105,15 @@ def get_maximum_value(digits, operators):
     for row in M:
         print(*row, end = " ")
         print('\n')
-    '''
+    
 
 
     #Loop to find minimum and maximum values for a expression
     for s in range(n-1):
         for i in range(1,n-s-1):
             j = i+s
-            m[i][j], M[i][j] = MinAndMax(i,j)
+            print(MinAndMax(i,j,M,m,operators))
+
 
     return (M[0][n-1])
 

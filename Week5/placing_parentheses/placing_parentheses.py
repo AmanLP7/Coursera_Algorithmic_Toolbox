@@ -57,8 +57,8 @@ def evalt(a, b, op):
 ## The function returns a list whose first value is the minimum value,
 ## and the second value is a maximum value.
 def MinAndMax(i,j,M,m,operators):
-    minVal = -float("Inf")
-    maxVal = float("Inf")
+    minVal = float("Inf")
+    maxVal = -float("Inf")
     minMax = 0
 
     #Loop to calculate minimum and maximum value
@@ -68,9 +68,9 @@ def MinAndMax(i,j,M,m,operators):
         c = evalt(m[i][k], M[k+1][j], operators[k])
         d = evalt(m[i][k], m[k+1][j], operators[k])
 
-        minMax = [min(minVal, a, b, c, d), max(maxVal, a, b, c, d)]
+        #print(type(minVal),type(a),type(b),type(c),type(d))
 
-    print(minMax)
+        minMax = min(minVal, a, b, c, d), max(maxVal, a, b, c, d)
 
 
     return(minMax)
@@ -112,7 +112,8 @@ def get_maximum_value(digits, operators):
     for s in range(n-1):
         for i in range(1,n-s-1):
             j = i+s
-            print(MinAndMax(i,j,M,m,operators))
+            m(i,j),M(i,j) = MinAndMax(i,j,M,m,operators)
+            
 
 
     return (M[0][n-1])
@@ -129,10 +130,10 @@ def get_maximum_value(digits, operators):
 
 if __name__ == "__main__":
     expression = list(input())
-    digits = expression[0:len(expression)+1:2]
+    digits = [int(x) for x in expression[0:len(expression)+1:2]]
     operators = expression[1:len(expression)+1:2]
     print(digits,operators)
-    get_maximum_value(digits, operators)
+    print(get_maximum_value(digits, operators))
 
 
 

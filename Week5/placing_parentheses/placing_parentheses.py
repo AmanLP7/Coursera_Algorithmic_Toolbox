@@ -63,11 +63,15 @@ def MinAndMax(i,j,digits,operators):
 
     #Loop to calculate the minimum and maximum value for
     #a given subexpression
-    for k in range(i,j-1):
+    for k in range(i,j):
         a = evalt(M[i][k],M[k+1][j],operators[k])
         b = evalt(M[i][k],m[k+1][j],operators[k])
         c = evalt(m[i][k],M[k+1][j],operators[k])
         d = evalt(m[i][k],m[k+1][j],operators[k])
+
+
+        minVal = min(minVal,a,b,c,d)
+        maxVal = max(maxVal,a,b,c,d)
 
 
 
@@ -99,7 +103,7 @@ def get_maximum_value(digits, operators):
 
 
     #Loop to calculate the maximum value of an expression
-    for s in range(n-1):
+    for s in range(1,n):
         for i in range(n-s):
             j = i+s
             m[i][j],M[i][j] = MinAndMax(i,j)

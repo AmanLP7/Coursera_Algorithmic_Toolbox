@@ -56,24 +56,19 @@ def evalt(a, b, op):
 ## Function to calculate minimum and maximum value for an expression.
 ## The function returns a list whose first value is the minimum value,
 ## and the second value is a maximum value.
-def MinAndMax(i,j,M,m,operators):
+def MinAndMax(i,j,digits,operators):
+
     minVal = float("Inf")
     maxVal = -float("Inf")
-    minMax = 0
 
-    #Loop to calculate minimum and maximum value
-    for k in range(i,j):
-        a = evalt(M[i][k], M[k+1][j], operators[k])
-        b = evalt(M[i][k], m[k+1][j], operators[k])
-        c = evalt(m[i][k], M[k+1][j], operators[k])
-        d = evalt(m[i][k], m[k+1][j], operators[k])
+    #Loop to calculate the minimum and maximum value for
+    #a given subexpression
+    for k in range(i,j-1):
+        a = evalt(M[i][k],M[k+1][j],operators[k])
+        b = evalt(M[i][k],m[k+1][j],operators[k])
+        c = evalt(m[i][k],M[k+1][j],operators[k])
+        d = evalt(m[i][k],m[k+1][j],operators[k])
 
-        print(minVal,maxVal,a,b,c,d)
-
-        minVal,maxVal = [min(minVal, a, b, c, d), max(maxVal, a, b, c, d)]
-
-
-    return([minVal,maxVal])
 
 
 
@@ -84,40 +79,35 @@ def get_maximum_value(digits, operators):
 
     n = len(digits)
 
-    #Matrices to store minimum and maximum values
-    #M stores minimum values and M stores maximum values
+    #Initialising min and max matrices
     m = [[0 for i in range(n)] for j in range(n)]
     M = [[0 for i in range(n)] for j in range(n)]
 
-    #Filling the diagnol elements
+    #Filling diagnol elements with corresponding elements in
+    #"digits" list.
     for i in range(n):
         m[i][i] = digits[i]
         M[i][i] = digits[i]
-    
 
 
-    #Loop to find minimum and maximum values for a expression
-    for s in range(n-1):
-        for i in range(1,n-s-1):
-            j = i+s
-            m[i][j],M[i][j] = MinAndMax(i,j,M,m,operators)
-
-
-    for row in m:
-        print(*row, end= " ")
-        print("\n")
-
-    print('\n')
-
-    for row in M:
-        print(*row, end = " ")
+    for rows in m:
+        print(*rows,end=' ')
         print('\n')
-            
+    for rows in M:
+        print(*rows,end=' ')
+        print('\n')
 
 
-    return (M[0][n-1])
+    #Loop to calculate the maximum value of an expression
+    for s in range(n-1):
+        for i in range(n-s):
+            j = i+s
+            m[i][j],M[i][j] = MinAndMax(i,j)
 
+
+    return (M[1][n-1])
     
+
 
 
 
@@ -132,7 +122,7 @@ if __name__ == "__main__":
     digits = [int(x) for x in expression[0:len(expression)+1:2]]
     operators = expression[1:len(expression)+1:2]
     print(digits,operators)
-    print(get_maximum_value(digits, operators))
+    get_maximum_value(digits,operators)
 
 
 

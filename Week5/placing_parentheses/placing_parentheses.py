@@ -33,6 +33,10 @@
 ## Step 1 -> Initialise two square matrices of length n, "m" and "M".
 ## Step 2 -> Fill diagnol elements of both the matrices with the their
 ##           respective digit in the "digits" array. 
+## Step 3 -> Define a function MinAndMax() which evaluates the minimum
+##           and maximum value of a an expression based on minimum and
+##           maximum values of its subexpressions, by placing the
+##           parantheses in different order.
 
 
 
@@ -56,7 +60,7 @@ def evalt(a, b, op):
 ## Function to calculate minimum and maximum value for an expression.
 ## The function returns a list whose first value is the minimum value,
 ## and the second value is a maximum value.
-def MinAndMax(i,j,digits,operators):
+def MinAndMax(i,j,digits,operators,M,m):
 
     minVal = float("Inf")
     maxVal = -float("Inf")
@@ -72,6 +76,9 @@ def MinAndMax(i,j,digits,operators):
 
         minVal = min(minVal,a,b,c,d)
         maxVal = max(maxVal,a,b,c,d)
+
+
+    return ([minVal,maxVal])
 
 
 
@@ -94,22 +101,23 @@ def get_maximum_value(digits, operators):
         M[i][i] = digits[i]
 
 
+
+    #Loop to calculate the maximum value of an expression
+    for s in range(1,n):
+        for i in range(n-s):
+            j = i+s
+            m[i][j],M[i][j] = MinAndMax(i,j,digits,operators,M,m)
+
+    '''
     for rows in m:
         print(*rows,end=' ')
         print('\n')
     for rows in M:
         print(*rows,end=' ')
         print('\n')
+    '''
 
-
-    #Loop to calculate the maximum value of an expression
-    for s in range(1,n):
-        for i in range(n-s):
-            j = i+s
-            m[i][j],M[i][j] = MinAndMax(i,j)
-
-
-    return (M[1][n-1])
+    return (M[0][n-1])
     
 
 
@@ -126,7 +134,7 @@ if __name__ == "__main__":
     digits = [int(x) for x in expression[0:len(expression)+1:2]]
     operators = expression[1:len(expression)+1:2]
     print(digits,operators)
-    get_maximum_value(digits,operators)
+    print(get_maximum_value(digits,operators))
 
 
 

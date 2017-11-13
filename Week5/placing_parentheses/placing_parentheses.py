@@ -36,7 +36,17 @@
 ## Step 3 -> Define a function MinAndMax() which evaluates the minimum
 ##           and maximum value of a an expression based on minimum and
 ##           maximum values of its subexpressions, by placing the
-##           parantheses in different order.
+##           parantheses in different order. The fucntion returns, 
+##           minimum and maximum value for a subexpression.
+## Step 4 -> Define a function get_maximum_value() which chooses,
+##           the subexpressions from the given input, in order of
+##           increasing size, and passes it to the MinAndMax().
+## Step 5 -> The minimum and maximum value returned by the MinAndMax(),
+##           is used to fill the "m" and "M" matrices.
+## Step 6 -> Elements below the diagnols in both the matrices is are 0,
+##           the last element in topmost row of both the matrices m and M
+##           contain minimum and maximum value for the subexpression,
+##           respectively.
 
 
 
@@ -133,7 +143,6 @@ if __name__ == "__main__":
     expression = list(input())
     digits = [int(x) for x in expression[0:len(expression)+1:2]]
     operators = expression[1:len(expression)+1:2]
-    print(digits,operators)
     print(get_maximum_value(digits,operators))
 
 

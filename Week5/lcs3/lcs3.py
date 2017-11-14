@@ -1,23 +1,44 @@
 #Uses python3
 
-import sys
+
+##-----------------------------------------------------------------##
+
+
+               ############################################
+               #######  Longest Subsequence Problem  ######
+               #######   Time Complexity =>          ######
+               ############################################
+
+
+## This is the algorithm for computing the length of common sub-
+## -sequence for three sequences.
+
+## Input ->  Integers n,m,l, and sequences of length n,m,l
+##           respectively.
+## Output -> Non-negative integer p denoting length of common
+##           subsequence.
+
+
+## Below is the algorithm to compute the length of common
+## subsequence for three given sequences, it employs dynamic
+## programming.
+
+
 
 def lcs3(a, b, c):
-    #write your code here
-    return min(len(a), len(b), len(c))
+    
+    return 
+
+
+
+##-----------------------------------------------------------------##
+
+
 
 if __name__ == '__main__':
-    input = sys.stdin.read()
-    data = list(map(int, input.split()))
-    an = data[0]
-    data = data[1:]
-    a = data[:an]
-    data = data[an:]
-    bn = data[0]
-    data = data[1:]
-    b = data[:bn]
-    data = data[bn:]
-    cn = data[0]
-    data = data[1:]
-    c = data[:cn]
+    n,*a = list(map(int, input().split()))
+    m,*b = list(map(int, input().split()))
+    l,*c = list(map(int, input().split()))
+    
+    print(a,b,c,end = '\n')
     print(lcs3(a, b, c))

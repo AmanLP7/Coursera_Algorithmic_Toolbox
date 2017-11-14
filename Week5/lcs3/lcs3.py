@@ -36,9 +36,13 @@ def lcs3(a, b, c):
 
 
 if __name__ == '__main__':
-    n,*a = list(map(int, input().split()))
-    m,*b = list(map(int, input().split()))
-    l,*c = list(map(int, input().split()))
+    n,*a = list(map(int, input()))
+    m,*b = list(map(int, input()))
+    l,*c = list(map(int, input()))
     
     print(a,b,c,end = '\n')
     print(lcs3(a, b, c))
+
+
+
+##-----------------------------------------------------------------##

@@ -23,6 +23,9 @@
 
 def longest_subsequence_recursive(a,b):
 
+	# Base case
+	# 
+
 
 
 

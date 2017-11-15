@@ -28,6 +28,9 @@
 
 def longest_subsequence_recursive(a,b):
 
+	# Base case
+	# 
+
 
 	# Base case
 	# returns 0 if any of the index becomes 0

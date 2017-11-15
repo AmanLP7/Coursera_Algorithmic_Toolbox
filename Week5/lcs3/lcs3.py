@@ -1,6 +1,36 @@
 #Uses python3
 
 
+
+
+##-----------------------------------------------------------------##
+
+
+              #############################################
+              #######  Longest Subsequence Problem  #######
+              #######       Recursive Solution      #######
+              #######   Time Complexity => O(3^n)   #######
+              #############################################
+
+
+
+## This is a recursive implementation for the "Longest Subsequence
+## Problem".
+## Time Complexity => O(3^n)
+
+
+## Step1 -> 
+
+def longest_subsequence_recursive(a,b):
+
+
+
+
+
+
+
+
+
 ##-----------------------------------------------------------------##
 
 

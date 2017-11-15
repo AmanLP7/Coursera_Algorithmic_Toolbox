@@ -19,9 +19,19 @@
 ## Time Complexity => O(3^n)
 
 
-## Step1 -> 
+## Step 1 -> Base case: If any of the indices becomes zero, i.e, 
+##           length of the substring becomes 0, then return 0.
+## Step 2 -> Recursive case: Check for the equality of element at
+##           the index, if TRUE add 1, else add 0.
+
+
 
 def longest_subsequence_recursive(a,b):
+
+
+	# Base case
+	# returns 0 if any of the index becomes 0
+	if ()
 
 
 

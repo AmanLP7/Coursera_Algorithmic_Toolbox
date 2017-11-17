@@ -26,17 +26,31 @@
 
 
 
-def longest_subsequence_recursive(a,b):
-
-	# Base case
-	# 
+def longest_subsequence_recursive(a,b,i,j):
 
 
 	# Base case
 	# returns 0 if any of the index becomes 0
-	if ()
-
-
+	# If length of any of the sub string is less than or
+	# equals 0, return 0.
+	if ((i < 0) or (j < 0)):
+		return 0
+	# If none of the substrings are NULL, then compare the elements
+	# at the indices, and add 1 to the answer if they are equal else
+	# return the value unchanged.
+	else:
+		if a[i] == b[j]:
+			return (1 + max(longest_subsequence_recursive(a,b,i,j-1),
+				            longest_subsequence_recursive(a,b,i-1,j),
+				            longest_subsequence_recursive(a,b,i-1,j-1)
+				            )
+			        )
+		else:
+			return (max(longest_subsequence_recursive(a,b,i,j-1),
+				        longest_subsequence_recursive(a,b,i-1,j),
+				        longest_subsequence_recursive(a,b,i-1,j-1)
+				        )
+			        )
 
 
 
@@ -85,7 +99,7 @@ if __name__ == '__main__':
     l,*c = list(map(int, input()))
     
     print(a,b,c,end = '\n')
-    print(lcs3(a, b, c))
+    print(longest_subsequence_recursive(a, b, n-1,m-1))
 
 
 

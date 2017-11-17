@@ -22,7 +22,14 @@
 ## Step 1 -> Base case: If any of the indices becomes zero, i.e, 
 ##           length of the substring becomes 0, then return 0.
 ## Step 2 -> Recursive case: Check for the equality of element at
-##           the index, if TRUE add 1, else add 0.
+##           the index i,j, cases are as follows:
+##           If equal: add 1 to the return value,
+##           and check if it is less than or equal to min(i,j),
+##           if TRUE return 1 + ans, else return ans
+##           If not equal : return ans.
+##           Note that the the maximum possible length of the
+##           substring cannot be greater than the length of smaller
+##           of two strings being compared
 
 
 

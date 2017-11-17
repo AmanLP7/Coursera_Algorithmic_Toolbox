@@ -27,13 +27,13 @@ def longest_subsequence_recursive(a,b,i,j):
 	# Base case
 	# If length of any of the sub string is less than or
 	# equals 0, return 0.
-	if ((i < 0) or (j <= 0)):
+	if ((i < 0) or (j < 0)):
 		return 0
 	# If none of the substrings are NULL, then compare the elements
 	# at the indices, and add 1 to the answer if they are equal else
 	# return the value unchanged.
 	else:
-		if a[i] == a[j]:
+		if a[i] == b[j]:
 			return (1 + max(longest_subsequence_recursive(a,b,i,j-1),
 				            longest_subsequence_recursive(a,b,i-1,j),
 				            longest_subsequence_recursive(a,b,i-1,j-1)

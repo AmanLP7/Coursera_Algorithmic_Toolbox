@@ -33,47 +33,36 @@
 
 
 
-def longest_subsequence_recursive(a,b,i,j):
+def lcs_recursive(a,b,i,j):
 
 
-	# Base case
+	# Base case:
 	# returns 0 if any of the index becomes 0
 	# If length of any of the sub string is less than or
 	# equals 0, return 0.
-	if ((i < 0) or (j < 0)):
+	if (i < 0 or j < 0):
 		return 0
-	# If none of the substrings are NULL, then compare the elements
-	# at the indices, and add 1 to the answer if they are equal and
-	# if the value (1+ans) is less than or equal to the min(i,j),
-	# else the return value remains unchanged.
+
+
+	# Recursive case:
+	# If none of the substrings are NULL, then add 1 to the
+	# returned value of subproblem, and check whether it is
+	# equal to or less than the length of smallest substring,
+	# if TRUE keep the ans and return it, else, return the 
+	# original ans of the subproblem.
 	else:
-		if a[i] == b[j]:
-			ans = (1 + max(longest_subsequence_recursive(a,b,i,j-1),
-				           longest_subsequence_recursive(a,b,i-1,j),
-				           longest_subsequence_recursive(a,b,i-1,j-1)
-				           )
-			       )
+		ans = max(lcs_recursive(a,b,i-1,j),
+			      lcs_recursive(a,b,i,j-1),
+			      lcs_recursive(a,b,i-1,j-1))
 
-			# Checking if the ans is less than or equal,
-			# to the min(i,j)
-			if ans <= min(i,j):
-				print()
-				return ans
-			else:
-				return (ans-1)
+		if ((1+ans) <= min(i,j)):
+			return (1+ans)
 		else:
-			ans = (max(longest_subsequence_recursive(a,b,i,j-1),
-				       longest_subsequence_recursive(a,b,i-1,j),
-				       longest_subsequence_recursive(a,b,i-1,j-1)
-				       )
-			       )
+			return
 
-			return ans
+	
 
-
-
-
-
+	
 
 
 ##-----------------------------------------------------------------##
@@ -102,8 +91,8 @@ def longest_subsequence_recursive(a,b,i,j):
 
 
 def lcs3(a, b, c):
-    
-    return 
+	return
+
 
 
 
@@ -117,7 +106,7 @@ if __name__ == '__main__':
     l,*c = list(map(int, input()))
     
     print(a,b,c,end = '\n')
-    print(longest_subsequence_recursive(a, b, n-1,m-1))
+    print(lcs_recursive(a, b, n-1,m-1))
 
 
 

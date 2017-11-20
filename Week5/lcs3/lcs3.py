@@ -43,21 +43,32 @@ def longest_subsequence_recursive(a,b,i,j):
 	if ((i < 0) or (j < 0)):
 		return 0
 	# If none of the substrings are NULL, then compare the elements
-	# at the indices, and add 1 to the answer if they are equal else
-	# return the value unchanged.
+	# at the indices, and add 1 to the answer if they are equal and
+	# if the value (1+ans) is less than or equal to the min(i,j),
+	# else the return value remains unchanged.
 	else:
 		if a[i] == b[j]:
-			return (1 + max(longest_subsequence_recursive(a,b,i,j-1),
-				            longest_subsequence_recursive(a,b,i-1,j),
-				            longest_subsequence_recursive(a,b,i-1,j-1)
-				            )
-			        )
+			ans = (1 + max(longest_subsequence_recursive(a,b,i,j-1),
+				           longest_subsequence_recursive(a,b,i-1,j),
+				           longest_subsequence_recursive(a,b,i-1,j-1)
+				           )
+			       )
+
+			# Checking if the ans is less than or equal,
+			# to the min(i,j)
+			if ans <= min(i,j):
+				print()
+				return ans
+			else:
+				return (ans-1)
 		else:
-			return (max(longest_subsequence_recursive(a,b,i,j-1),
-				        longest_subsequence_recursive(a,b,i-1,j),
-				        longest_subsequence_recursive(a,b,i-1,j-1)
-				        )
-			        )
+			ans = (max(longest_subsequence_recursive(a,b,i,j-1),
+				       longest_subsequence_recursive(a,b,i-1,j),
+				       longest_subsequence_recursive(a,b,i-1,j-1)
+				       )
+			       )
+
+			return ans
 
 
 

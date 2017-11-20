@@ -42,8 +42,6 @@ def lcs_recursive(a,b,i,j):
 	# equals 0, return 0.
 	if (i < 0 or j < 0):
 		return 0
-
-
 	# Recursive case:
 	# If none of the substrings are NULL, then add 1 to the
 	# returned value of subproblem, and check whether it is
@@ -55,10 +53,13 @@ def lcs_recursive(a,b,i,j):
 			      lcs_recursive(a,b,i,j-1),
 			      lcs_recursive(a,b,i-1,j-1))
 
-		if ((1+ans) <= min(i,j)):
+        # Checking whether the length of common subsequence
+        # is less than or equal to the length of smallest
+        # string.
+		if ((1+ans) <= min(i,j)+1 and a[i] == b[j]):
 			return (1+ans)
 		else:
-			return
+			return (ans)
 
 	
 
@@ -101,9 +102,9 @@ def lcs3(a, b, c):
 
 
 if __name__ == '__main__':
-    n,*a = list(map(int, input()))
-    m,*b = list(map(int, input()))
-    l,*c = list(map(int, input()))
+    n,*a = list(map(int, input().split(" ")))
+    m,*b = list(map(int, input().split(" ")))
+    l,*c = list(map(int, input().split(" ")))
     
     print(a,b,c,end = '\n')
     print(lcs_recursive(a, b, n-1,m-1))

@@ -1,6 +1,7 @@
 #Uses python3
 
-
+import pprint
+import random
 
 
 ##-----------------------------------------------------------------##
@@ -9,14 +10,14 @@
               #############################################
               #######  Longest Subsequence Problem  #######
               #######       Recursive Solution      #######
-              #######   Time Complexity => O(3^n)   #######
+              #######   Time Complexity => O(4^n)   #######
               #############################################
 
 
 
 ## This is a recursive implementation for the "Longest Subsequence
 ## Problem".
-## Time Complexity => O(3^n)
+## Time Complexity => O(4^n)
 
 
 ## Step 1 -> Base case: If any of the indices becomes zero, i.e, 
@@ -33,14 +34,14 @@
 
 
 
-def lcs_recursive(a,b,i,j):
+def lcs_recursive(a,b,c,i,j,k):
 
 
 	# Base case:
 	# returns 0 if any of the index becomes 0
 	# If length of any of the sub string is less than or
 	# equals 0, return 0.
-	if (i < 0 or j < 0):
+	if (i < 0 or j < 0 or k < 0):
 		return 0
 	# Recursive case:
 	# If none of the substrings are NULL, then add 1 to the
@@ -49,14 +50,15 @@ def lcs_recursive(a,b,i,j):
 	# if TRUE keep the ans and return it, else, return the 
 	# original ans of the subproblem.
 	else:
-		ans = max(lcs_recursive(a,b,i-1,j),
-			      lcs_recursive(a,b,i,j-1),
-			      lcs_recursive(a,b,i-1,j-1))
+		ans = max(lcs_recursive(a,b,c,i-1,j,k),
+			      lcs_recursive(a,b,c,i,j-1,k),
+			      lcs_recursive(a,b,c,i,j,k-1),
+			      lcs_recursive(a,b,c,i-1,j-1,k-1))
 
         # Checking whether the length of common subsequence
         # is less than or equal to the length of smallest
         # string.
-		if ((1+ans) <= min(i,j)+1 and a[i] == b[j]):
+		if ((1+ans) <= min(i,j,k)+1 and (a[i] == b[j] == c[k])):
 			return (1+ans)
 		else:
 			return (ans)
@@ -90,8 +92,20 @@ def lcs_recursive(a,b,i,j):
 ## programming.
 
 
+## Steps:
+## Step 1 -> Create a 3-D matrix with length = i, breadth = j,
+##           depth = k. 
 
-def lcs3(a, b, c):
+def lcs3(a, b, c, i, j, k):
+
+	# 3-D matrix to store longest subsequence for
+	# each combinations of arrays
+	mat = [[[0 for x in range(i+1)] for y in range(j+1)] 
+	         for z in range(k+1)]
+	pprint.pprint(mat)
+
+	
+
 	return
 
 
@@ -107,7 +121,7 @@ if __name__ == '__main__':
     l,*c = list(map(int, input().split(" ")))
     
     print(a,b,c,end = '\n')
-    print(lcs_recursive(a, b, n-1,m-1))
+    lcs3(a,b,c,n-1,m-1,l-1)
 
 
 

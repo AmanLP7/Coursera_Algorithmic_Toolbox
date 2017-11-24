@@ -97,15 +97,29 @@ def lcs_recursive(a,b,c,i,j,k):
 ##           depth = k. 
 ## Step 2 -> All the elements with 0 index either for length, 
 ##           breadth or height or all, is filled with 0.
+## Step 3 -> Create a loop to fill the 3-D matrix, following 
+##           rules are to be followed in order to fill the matrix.
+## Step 4 -> To fill element mat[i][j][k], first find the max
+##           value among mat[i-1][j][k], mat[i][j-1][k],
+##           mat[i][j][k-1], mat[i-1][j-1][k-1].
+## Step 5 -> If a[i] = b[j] = c[k], add 1 to the max value
+##           obtained above, and check whether the new value
+##           is less than or equal to the min(i,j,k).
+## Step 6 -> IF TRUE, fill the mat[i][j][k] with the new value
+##           else, fill mat[i][j][k] with unchanged max value.
 
 def lcs3(a, b, c, i, j, k):
 
 	# 3-D matrix to store longest subsequence for
 	# each combinations of arrays
-	mat = [[[0 for x in range(i+1)] for y in range(j+1)] 
-	         for z in range(k+1)]
+	mat = [[[0 for x in range(i+2)] for y in range(j+2)] 
+	         for z in range(k+2)]
+
 	pprint.pprint(mat)
 
+	
+	# Loop to fill our 3-D matrix
+	
 	
 
 	return

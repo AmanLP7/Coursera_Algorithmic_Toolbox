@@ -95,6 +95,8 @@ def lcs_recursive(a,b,c,i,j,k):
 ## Steps:
 ## Step 1 -> Create a 3-D matrix with length = i, breadth = j,
 ##           depth = k. 
+## Step 2 -> All the elements with 0 index either for length, 
+##           breadth or height or all, is filled with 0.
 
 def lcs3(a, b, c, i, j, k):
 

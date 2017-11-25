@@ -115,7 +115,7 @@ def lcs3(a, b, c, n, m, l):
 	mat = [[[0 for x in range(n+1)] for y in range(m+1)] 
 	         for z in range(l+1)]
 
-	pprint.pprint(mat)
+	#pprint.pprint(mat)
 
 	
 	# Loop to fill our 3-D matrix
@@ -124,17 +124,24 @@ def lcs3(a, b, c, n, m, l):
 			for k in range(1,l+1):
 				maxVal = max(mat[i-1][j][k],mat[i][j-1][k],
 					         mat[i][j][k-1],mat[i-1][j-1][k-1])
-				if (a[i-1] ==
-					b[j-1]
+				print(maxVal,i,j,k,end=' ')
+				if (a[i-1] == b[j-1] == [k-1]):
+					print("Yes")
+					if (1+maxVal <= min(i,j,k)):
+						mat[i][j][k] = 1+maxVal
+						print("inc",1+maxVal)
+					else:
+						mat[i][j][k] = maxVal
+				else:
+					print("No")
+					mat[i][j][k] = maxVal
+
+
+	pprint.pprint(mat)
 
 
 
-
-	
-	
-
-	return
-
+	return mat[n][m][l]
 
 
 
@@ -148,7 +155,7 @@ if __name__ == '__main__':
     l,*c = list(map(int, input().split(" ")))
     
     print(a,b,c,end = '\n')
-    lcs3(a,b,c,n,m,l)
+    print(lcs3(a,b,c,n,m,l))
 
 
 

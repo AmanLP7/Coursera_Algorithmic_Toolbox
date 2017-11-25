@@ -108,17 +108,28 @@ def lcs_recursive(a,b,c,i,j,k):
 ## Step 6 -> IF TRUE, fill the mat[i][j][k] with the new value
 ##           else, fill mat[i][j][k] with unchanged max value.
 
-def lcs3(a, b, c, i, j, k):
+def lcs3(a, b, c, n, m, l):
 
 	# 3-D matrix to store longest subsequence for
 	# each combinations of arrays
-	mat = [[[0 for x in range(i+2)] for y in range(j+2)] 
-	         for z in range(k+2)]
+	mat = [[[0 for x in range(n+1)] for y in range(m+1)] 
+	         for z in range(l+1)]
 
 	pprint.pprint(mat)
 
 	
 	# Loop to fill our 3-D matrix
+	for i in range(1,n+1):
+		for j in range(1,m+1):
+			for k in range(1,l+1):
+				maxVal = max(mat[i-1][j][k],mat[i][j-1][k],
+					         mat[i][j][k-1],mat[i-1][j-1][k-1])
+				if (a[i-1] ==
+					b[j-1]
+
+
+
+
 	
 	
 
@@ -137,7 +148,7 @@ if __name__ == '__main__':
     l,*c = list(map(int, input().split(" ")))
     
     print(a,b,c,end = '\n')
-    lcs3(a,b,c,n-1,m-1,l-1)
+    lcs3(a,b,c,n,m,l)
 
 
 

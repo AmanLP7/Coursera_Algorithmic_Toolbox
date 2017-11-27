@@ -112,8 +112,8 @@ def lcs3(a, b, c, n, m, l):
 
 	# 3-D matrix to store longest subsequence for
 	# each combinations of arrays
-	mat = [[[0 for x in range(n+1)] for y in range(m+1)] 
-	         for z in range(l+1)]
+	mat = [[[0 for x in range(l+1)] for y in range(m+1)] 
+	         for z in range(n+1)]
 
 	#pprint.pprint(mat)
 
@@ -124,20 +124,20 @@ def lcs3(a, b, c, n, m, l):
 			for k in range(1,l+1):
 				maxVal = max(mat[i-1][j][k],mat[i][j-1][k],
 					         mat[i][j][k-1],mat[i-1][j-1][k-1])
-				print(maxVal,i,j,k,end=' ')
-				if (a[i-1] == b[j-1] == [k-1]):
-					print("Yes")
+				#print(maxVal,a[i-1],b[j-1],c[k-1],end=' ')
+				if (a[i-1] == b[j-1] == c[k-1]):
+					#print("Yes")
 					if (1+maxVal <= min(i,j,k)):
 						mat[i][j][k] = 1+maxVal
-						print("inc",1+maxVal)
+						#print("inc",1+maxVal)
 					else:
 						mat[i][j][k] = maxVal
 				else:
-					print("No")
+					#print("No")
 					mat[i][j][k] = maxVal
 
 
-	pprint.pprint(mat)
+	#pprint.pprint(mat)
 
 
 
@@ -154,9 +154,21 @@ if __name__ == '__main__':
     m,*b = list(map(int, input().split(" ")))
     l,*c = list(map(int, input().split(" ")))
     
-    print(a,b,c,end = '\n')
+    #print(a,b,c,end = '\n')
     print(lcs3(a,b,c,n,m,l))
 
 
 
 ##-----------------------------------------------------------------##
+
+
+                 ####################################
+                 #########  Stress Testing  #########
+                 ####################################
+
+
+while(True):
+
+	
+
+

@@ -147,7 +147,7 @@ def lcs3(a, b, c, n, m, l):
 
 ##-----------------------------------------------------------------##
 
-
+'''
 
 if __name__ == '__main__':
     n,*a = list(map(int, input().split(" ")))
@@ -157,7 +157,7 @@ if __name__ == '__main__':
     #print(a,b,c,end = '\n')
     print(lcs3(a,b,c,n,m,l))
 
-
+'''
 
 ##-----------------------------------------------------------------##
 
@@ -168,6 +168,31 @@ if __name__ == '__main__':
 
 
 while(True):
+	n = random.randint(90,100)
+	m = random.randint(90,100)
+	l = random.randint(90,100)
+
+	a = [random.randint(-118,-108) for i in range(n)]
+	b = [random.randint(-118,-108) for i in range(m)]
+	c = [random.randint(-118,-108) for i in range(l)]
+
+	print(lcs3(a,b,c,n,m,l))
+
+	break
+
+
+	'''
+
+	res1 = lcs_recursive(a,b,c,n-1,m-1,l-1)
+	res2 = lcs3(a,b,c,n,m,l)
+
+	if (res1 == res2):
+		print("OK")
+	else:
+		print("Wrong Answer", res1, res2, sep = '\t')
+		break
+
+	'''
 
 	
 
